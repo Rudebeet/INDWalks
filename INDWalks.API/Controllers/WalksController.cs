@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using INDWalks.API.CustomActionFilter;
 using INDWalks.API.Models.Domain;
 using INDWalks.API.Models.DTO;
 using INDWalks.API.Repositories;
@@ -27,6 +28,7 @@ namespace INDWalks.API.Controllers
 
         //Create a Walk
         [HttpPost]
+        [ValidateModel]
         public async Task<IActionResult> Create([FromBody]WalkAddDto walkAddDto)
         {
             //map Dto to domain model
@@ -65,6 +67,7 @@ namespace INDWalks.API.Controllers
 
         //Update walk by Id
         [HttpPut("{id}")]
+        [ValidateModel]
         public async Task<IActionResult> UpdateById ([FromRoute]Guid id,[FromBody] WalkUpdatedto walkUpdatedto)
         {
             Walk? walkDomain = _mapper.Map<Walk>(walkUpdatedto);

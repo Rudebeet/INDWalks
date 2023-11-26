@@ -1,4 +1,5 @@
-﻿using INDWalks.API.Data;
+﻿using INDWalks.API.CustomActionFilter;
+using INDWalks.API.Data;
 using INDWalks.API.Mappings;
 using INDWalks.API.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,8 @@ options.UseSqlServer("Server=localhost; Database=INDWalksDB; User Id=sa; Passwor
 
 builder.Services.AddScoped<IRegionRepository, SqlRegionRepository>();
 builder.Services.AddScoped<IWalkRepository, SqlWalkRepository>();
+
+builder.Services.AddScoped<ValidateModelAttribute>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 

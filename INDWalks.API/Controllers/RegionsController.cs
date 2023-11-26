@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using INDWalks.API.CustomActionFilter;
 using INDWalks.API.Data;
 using INDWalks.API.Models.Domain;
 using INDWalks.API.Models.DTO;
@@ -83,6 +84,7 @@ namespace INDWalks.API.Controllers
 
         // POST api/values
         [HttpPost]
+        [ValidateModel]
         public async Task<IActionResult> Create([FromBody]RegionAddDto regionAddDto)
         {
             //Convert DTO to Domain Model
@@ -114,6 +116,7 @@ namespace INDWalks.API.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
+        [ValidateModel]
         public async Task<IActionResult> Update([FromRoute]Guid id, [FromBody] RegionUpadateDto regionUpadateDto)
         {
 
