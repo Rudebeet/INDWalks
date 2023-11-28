@@ -40,12 +40,14 @@ namespace INDWalks.API.Controllers
             return Ok(_mapper.Map<Walk>(walkAddDto));
         }
 
-        //Get all Walks
+        //Get all Walks?filterOn="Name"&filterQuery="Track"
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
+            [FromQuery] string? sortBy, [FromQuery] bool isAscending = true,
+            [FromQuery] int pageNumber=1, [FromQuery] int pageSize=1000)
         {
 
-            List<Walk> walk = await _walkRepository.GetwalkAsync();
+            List<Walk> walk = await _walkRepository.GetwalkAsync(filterOn,filterQuery,sortBy,isAscending,pageNumber,pageSize);
 
             return Ok(_mapper.Map<List<WalkDto>>(walk));
         }

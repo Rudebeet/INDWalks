@@ -2,6 +2,7 @@
 using INDWalks.API.Data;
 using INDWalks.API.Models.Domain;
 using INDWalks.API.Models.DTO;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace INDWalks.API.Repositories
@@ -24,9 +25,37 @@ namespace INDWalks.API.Repositories
         }
 
 
-        async Task<List<Walk>> IWalkRepository.GetwalkAsync()
+        async Task<List<Walk>> IWalkRepository.GetwalkAsync(string? filterOn, string? filterQuery, string? sortBy, bool isAscending,
+            int pageNumber, int pageSize)
         {
-            return await _dbcontext.Walks.Include("Difficulty").Include("Region").ToListAsync();
+            var walk = _dbcontext.Walks.Include("Difficulty").Include("Region").AsQueryable();
+
+            //Filtering
+            if(string.IsNullOrWhiteSpace(filterOn) == false && string.IsNullOrWhiteSpace(filterQuery) == false)
+            {
+                if(filterOn.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    walk = walk.Where(x => x.Name.Contains(filterQuery));
+                }
+            }
+
+            //Sorting
+            if(string.IsNullOrWhiteSpace(sortBy) == false)
+            {
+                if(sortBy.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    walk = isAscending ? walk.OrderBy(x=>x.Name): walk.OrderByDescending(x => x.Name);
+                }
+                if(sortBy.Equals("Length" , StringComparison.OrdinalIgnoreCase))
+                {
+                    walk = isAscending ? walk.OrderBy(x => x.LengthInKM) : walk.OrderByDescending(x => x.LengthInKM);
+                }
+            }
+
+            //pagination
+            var skipResults = (pageNumber - 1) * pageSize;
+
+            return await walk.Skip(skipResults).Take(pageSize).ToListAsync();
         }
 
         async Task<Walk?> IWalkRepository.GetWalkAsync(Guid id)
