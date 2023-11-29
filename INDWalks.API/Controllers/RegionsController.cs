@@ -8,6 +8,7 @@ using INDWalks.API.Data;
 using INDWalks.API.Models.Domain;
 using INDWalks.API.Models.DTO;
 using INDWalks.API.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 namespace INDWalks.API.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class RegionsController : Controller
     {
         private readonly INDWalksDbContext _dbContext;
@@ -31,6 +33,7 @@ namespace INDWalks.API.Controllers
 
         // GET: api/values
         [HttpGet]
+        [Authorize(Roles = "reader,writer")]
         public async Task<IActionResult> GetAll()
         {
             //Getting data from Databae
@@ -58,6 +61,7 @@ namespace INDWalks.API.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "reader,writer")]
         public async Task<IActionResult> GetByID(Guid id)
         {
             //retriving data from database
@@ -85,6 +89,7 @@ namespace INDWalks.API.Controllers
         // POST api/values
         [HttpPost]
         [ValidateModel]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> Create([FromBody]RegionAddDto regionAddDto)
         {
             //Convert DTO to Domain Model
@@ -117,6 +122,7 @@ namespace INDWalks.API.Controllers
         // PUT api/values/5
         [HttpPut("{id}")]
         [ValidateModel]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> Update([FromRoute]Guid id, [FromBody] RegionUpadateDto regionUpadateDto)
         {
 
@@ -135,6 +141,7 @@ namespace INDWalks.API.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> Delete(Guid id)
         {
             Region? region = await _regionrepository.DeleteAsync(id);

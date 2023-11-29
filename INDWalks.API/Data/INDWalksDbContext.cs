@@ -7,7 +7,7 @@ namespace INDWalks.API.Data
 	public class INDWalksDbContext : DbContext
 	{
         
-        public INDWalksDbContext(DbContextOptions options) : base(options)
+        public INDWalksDbContext(DbContextOptions<INDWalksDbContext> options) : base(options)
 		{
 		}
 

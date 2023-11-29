@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -7,6 +8,7 @@ using INDWalks.API.CustomActionFilter;
 using INDWalks.API.Models.Domain;
 using INDWalks.API.Models.DTO;
 using INDWalks.API.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -29,6 +31,7 @@ namespace INDWalks.API.Controllers
         //Create a Walk
         [HttpPost]
         [ValidateModel]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> Create([FromBody]WalkAddDto walkAddDto)
         {
             //map Dto to domain model
@@ -42,6 +45,7 @@ namespace INDWalks.API.Controllers
 
         //Get all Walks?filterOn="Name"&filterQuery="Track"
         [HttpGet]
+        [Authorize(Roles = "reader,writer")]
         public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
             [FromQuery] string? sortBy, [FromQuery] bool isAscending = true,
             [FromQuery] int pageNumber=1, [FromQuery] int pageSize=1000)
@@ -54,6 +58,7 @@ namespace INDWalks.API.Controllers
 
         // GET walks by Id
         [HttpGet("{id}")]
+        [Authorize(Roles = "reader,writer")]
         public async Task<IActionResult> GetByID(Guid id)
         {
             Walk? walkDomain = await _walkRepository.GetWalkAsync(id);
@@ -70,6 +75,7 @@ namespace INDWalks.API.Controllers
         //Update walk by Id
         [HttpPut("{id}")]
         [ValidateModel]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> UpdateById ([FromRoute]Guid id,[FromBody] WalkUpdatedto walkUpdatedto)
         {
             Walk? walkDomain = _mapper.Map<Walk>(walkUpdatedto);
@@ -86,6 +92,7 @@ namespace INDWalks.API.Controllers
 
         //Delete by Id
         [HttpDelete("{id}")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> DeletebyId (Guid id)
         {
             Walk? walkDomain = await _walkRepository.DeleteAsync(id);

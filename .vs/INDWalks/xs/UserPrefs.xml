@@ -1,25 +1,21 @@
 ﻿<Properties StartupConfiguration="{2BD6FDE1-AAB6-4420-9312-394BA0E059AE}|https">
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.INDWalks.API PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="INDWalks.API/Models/Domain/Region.cs">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="INDWalks.API/Program.cs">
     <Files>
-      <File FileName="INDWalks.API/Program.cs" Line="22" Column="54" />
+      <File FileName="INDWalks.API/Program.cs" Line="26" Column="34" IsPinned="True" />
       <File FileName="INDWalks.API/Models/Domain/Difficulty.cs" />
-      <File FileName="INDWalks.API/Models/Domain/Region.cs" Line="6" Column="10" />
+      <File FileName="INDWalks.API/Models/Domain/Region.cs" />
       <File FileName="INDWalks.API/Models/Domain/Walk.cs" />
-      <File FileName="INDWalks.API/Data/INDWalksDbContext.cs" />
-      <File FileName="INDWalks.API/appsettings.json" />
-      <File FileName="INDWalks.API/appsettings.Development.json" />
+      <File FileName="INDWalks.API/Data/INDWalksDbContext.cs" Line="10" Column="68" />
+      <File FileName="INDWalks.API/appsettings.json" Line="10" Column="30" />
+      <File FileName="INDWalks.API/appsettings.Development.json" Line="1" Column="1" />
       <File FileName="INDWalks.API/Migrations/INDWalksDbContextModelSnapshot.cs" />
-      <File FileName="INDWalks.API/Controllers/RegionsController.cs" Line="120" Column="92" />
+      <File FileName="INDWalks.API/Controllers/RegionsController.cs" Line="21" Column="12" />
       <File FileName="INDWalks.API/Models/DTO/RegionDto.cs" />
-      <File FileName="INDWalks.API/Models/DTO/RegionAddDto.cs" Line="15" Column="41" />
-      <File FileName="INDWalks.API/Models/DTO/RegionUpdateDto.cs" Line="21" Column="1" />
+      <File FileName="INDWalks.API/Models/DTO/RegionAddDto.cs" />
+      <File FileName="INDWalks.API/Models/DTO/RegionUpdateDto.cs" />
       <File FileName="INDWalks.API/Repositories/SqlRegionRepository.cs" />
       <File FileName="INDWalks.API/Mappings/AutoMapperProfiles.cs" />
       <File FileName="INDWalks.API/Migrations/20231126024535_SeedingData.cs" />
@@ -27,32 +23,34 @@
       <File FileName="INDWalks.API/Migrations/20231126031720_SeedingData1.cs" />
       <File FileName="INDWalks.API/Migrations/20231124151010_InitialMigration.cs" />
       <File FileName="INDWalks.API/Migrations/20231126033800_SeedingData2.cs" />
-      <File FileName="INDWalks.API/Controllers/WalksController.cs" Line="70" Column="23" />
-      <File FileName="INDWalks.API/Models/DTO/WalkAddDto.cs" Line="26" Column="43" />
+      <File FileName="INDWalks.API/Controllers/WalksController.cs" Line="45" Column="61" />
+      <File FileName="INDWalks.API/Models/DTO/WalkAddDto.cs" />
       <File FileName="INDWalks.API/Repositories/IWalkRepository.cs" />
       <File FileName="INDWalks.API/Repositories/SqlWalkRepository.cs" />
       <File FileName="INDWalks.API/Models/DTO/WalkDto.cs" />
       <File FileName="INDWalks.API/Repositories/IRegionRepository.cs" />
       <File FileName="INDWalks.API/Models/DTO/DifficultyDto.cs" />
-      <File FileName="INDWalks.API/Models/DTO/WalkUpdatedto.cs" Line="16" Column="19" />
-      <File FileName="INDWalks.API/Controllers/WeatherForecastController.cs" Line="12" Column="7" />
-      <File FileName="INDWalks.API/CustomActionFilter/ValidateModelAttribute.cs" Line="19" Column="1" />
+      <File FileName="INDWalks.API/Models/DTO/WalkUpdatedto.cs" />
+      <File FileName="INDWalks.API/Controllers/WeatherForecastController.cs" />
+      <File FileName="INDWalks.API/CustomActionFilter/ValidateModelAttribute.cs" />
+      <File FileName="INDWalks.API/Properties/launchSettings.json" Line="26" Column="26" />
+      <File FileName="INDWalks.API/Data/INDwalksAuthDbContext.cs" Line="15" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="INDWalks" selected="True">
-            <Node name="INDWalks.API" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="CustomActionFilter" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="Domain" expanded="True" />
-                <Node name="DTO" expanded="True" />
-              </Node>
+          <Node name="INDWalks">
+            <Node name="INDWalks.API">
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <Debugger.DebugSourceFolders />
 </Properties>
